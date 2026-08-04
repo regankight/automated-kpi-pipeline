@@ -1,5 +1,7 @@
 # Automated KPI Report Pipeline – Simulated Sales Dashboard Refresh
 
+Small ETL demo: fetch → clean → snapshot. Built to show pipeline structure and modular orchestration.
+
 ## Overview
 
 This project simulates an automated KPI reporting pipeline using Python, demonstrating key skills in data automation, data cleaning, KPI calculation, and reporting workflows. It reflects the kind of real-world automation I developed at Smarsh, GoRefime, and during freelance projects.
