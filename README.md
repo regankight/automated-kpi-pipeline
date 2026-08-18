@@ -1,20 +1,17 @@
-# Automated KPI Report Pipeline – Simulated Sales Dashboard Refresh
+# Automated KPI Report Pipeline
 
-Small ETL demo: fetch → clean → snapshot. Built to show pipeline structure and modular orchestration.
+Python KPI reporting pipeline built against generated CRM-style data, with data cleaning, KPI calculation, refresh orchestration, and failure handling.
 
 ## Overview
 
-This project simulates an automated KPI reporting pipeline using Python, demonstrating key skills in data automation, data cleaning, KPI calculation, and reporting workflows. It reflects the kind of real-world automation I developed at Smarsh, GoRefime, and during freelance projects.
+This project implements a lightweight KPI reporting workflow using generated CRM-style data. It cleans incomplete, duplicated, and inconsistent records, calculates conversion rate, average deal size, and deal velocity, and runs the reporting workflow with basic failure handling.
 
-## Tooling Summary (Project-to-Role Alignment)
+## Pipeline Design
 
-This project simulates a backend analytics pipeline aligned with common requirements for Analytics Engineer and Data Platform Engineer roles. It includes:
-
-- **ETL modularity**: Python pipeline simulating `generate → clean → calculate → notify` structure  
-- **Schema enforcement**: Null filtering, data coercion, and validation logic matching real-world CRM sync constraints  
-- **Power BI simulation**: Pre-aggregated CSV output for use in dashboard/reporting environments  
-- **Async logic simulation**: Time-delayed refresh and error alerting replicates retry-safe orchestration (as used in ADF + Power Automate)  
-- **Job-ready architecture**: Matches HSM-eligible data roles in validation-first ETL, reporting infrastructure, and dashboard reliability  
+- **ETL modularity:** Python pipeline organized as `generate → clean → calculate → notify`.
+- **Data validation:** Null filtering, duplicate removal, date coercion, and missing-value handling.
+- **Report output:** Calculates conversion rate, average deal size, and average deal velocity from cleaned CRM-style data.
+- **Refresh and failure handling:** Runs the reporting workflow and catches failures through a notification function.
 
 All code is fully modular and executable via `main.py`, with output stored in the `output/` directory.
 
@@ -35,7 +32,6 @@ The project showcases how to build a lightweight automated reporting solution wi
 - **Python:** Core logic and automation simulation.
 - **Pandas:** Data manipulation and cleaning.
 - **NumPy:** Data generation and randomization.
-- **Time:** Simulated scheduling.
 
 ## Project Structure
 
@@ -44,7 +40,6 @@ automated-kpi-dashboard/
 ├── data_generator.py       # Simulates messy CRM data
 ├── data_cleaning.py        # Cleans and standardizes data
 ├── kpi_calculator.py       # Calculates key sales metrics
-├── report_refresher.py     # Legacy runner (replaced by main.py)
 ├── notification_sim.py     # Simulates failure notifications
 ├── output/                 # Folder for saved .csv report
 ├── main.py                 # Runs the full pipeline
@@ -65,9 +60,6 @@ automated-kpi-dashboard/
 
 3. View the KPI report in your terminal and as a CSV in the `output/` folder.
 
-## Why This Matters
-
-This project demonstrates my ability to combine BI logic and process automation to produce repeatable, reliable insights. These are skills I developed at Smarsh, GoRefime, and through freelance work. By simulating real-world data challenges, it highlights how to maintain data quality while automating reporting.
 
 ## Connect with Me
 
