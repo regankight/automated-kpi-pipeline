@@ -1,6 +1,6 @@
 # Automated KPI Report Pipeline
 
-Python KPI reporting pipeline built against generated CRM-style data, with data cleaning, KPI calculation, refresh orchestration, and failure handling.
+Python KPI reporting pipeline built against generated CRM-style data, with data cleaning, KPI calculation, and failure handling.
 
 ## Overview
 
@@ -17,14 +17,13 @@ All code is fully modular and executable via `main.py`, with output stored in th
 
 ## Use Case
 
-The project showcases how to build a lightweight automated reporting solution without needing heavy backend infrastructure. It combines data cleaning, KPI calculation, and a simulated refresh process, similar to how BI and RevOps teams streamline reporting workflows.
+The project showcases how to build a lightweight automated reporting solution without needing heavy backend infrastructure. It combines data cleaning, KPI calculation, and failure handling in one command, similar to how BI and RevOps teams streamline reporting workflows.
 
 ## Key Features
 
 - **Data Generation:** Simulates messy, real-world CRM data (incomplete, duplicated, and inconsistent).
 - **Data Cleaning:** Standardizes data, handles nulls, and removes duplicates.
-- **KPI Calculation:** Computes conversion rates, average deal size, and average deal velocity.
-- **Automated Refresh Simulation:** Uses a simple schedule to mimic a weekly update.
+- **KPI Calculation:** Computes conversion rate, average deal size, and average deal velocity (days from created to closed, for won deals).
 - **Failure Alert Simulation:** Provides basic error handling through simulated alerts.
 
 ## Technologies Used
@@ -36,7 +35,7 @@ The project showcases how to build a lightweight automated reporting solution wi
 ## Project Structure
 
 ```
-automated-kpi-dashboard/
+automated-kpi-pipeline/
 ├── data_generator.py       # Simulates messy CRM data
 ├── data_cleaning.py        # Cleans and standardizes data
 ├── kpi_calculator.py       # Calculates key sales metrics
@@ -50,7 +49,9 @@ automated-kpi-dashboard/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/regankight/automated-kpi-dashboard.git
+   git clone https://github.com/regankight/automated-kpi-pipeline.git
+   cd automated-kpi-pipeline
+   pip install -r requirements.txt
    ```
 
 2. Run the main script:

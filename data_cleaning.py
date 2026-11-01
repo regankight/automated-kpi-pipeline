@@ -6,17 +6,20 @@ def clean_data(df):
     df = df.dropna(subset=['lead_id', 'lead_source', 'deal_stage'])
 
     # Remove duplicates
-    df = df.drop_duplicates(subset=['lead_id'])
+    df = df.drop_duplicates(subset=['lead_id']).copy()
 
     # Format dates
     df['created_date'] = pd.to_datetime(df['created_date'], errors='coerce')
     df['closed_date'] = pd.to_datetime(df['closed_date'], errors='coerce')
 
-    # Filter out rows with invalid or missing dates
-    df = df.dropna(subset=['created_date', 'closed_date'])
+    # Every lead needs a valid created_date; open deals have no closed_date yet
+    df = df.dropna(subset=['created_date'])
+
+    # Drop impossible records: closed before they were created
+    df = df[~(df['closed_date'] < df['created_date'])]
 
     # Make sure deal_size is numeric
     df['deal_size'] = pd.to_numeric(df['deal_size'], errors='coerce')
-    df = df.dropna(subset=['deal_size'])
+    df = df.dropna(subset=['deal_size']).copy()
 
     return df
