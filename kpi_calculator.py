@@ -6,9 +6,9 @@ def calculate_kpis(df):
 
     avg_deal_size = closed_won['deal_size'].mean() if not closed_won.empty else 0
 
-    # Calculate velocity: days between created and closed
-    df['velocity_days'] = (df['closed_date'] - df['created_date']).dt.days
-    avg_velocity = df['velocity_days'].mean() if not df.empty else 0
+    # Deal velocity: average days from created to closed, for won deals only
+    velocity_days = (closed_won['closed_date'] - closed_won['created_date']).dt.days
+    avg_velocity = velocity_days.mean() if not closed_won.empty else 0
 
     return {
         'Total Leads': total_leads,

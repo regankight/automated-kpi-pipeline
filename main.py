@@ -26,6 +26,7 @@ def run_pipeline():
 
         # Step 5: Save to CSV (safe for any working directory)
         output_path = os.path.join(os.path.dirname(__file__), "output", "kpi_report.csv")
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
         pd.DataFrame([kpis]).to_csv(output_path, index=False)
         print(f"\nSaved to {output_path}")
 
